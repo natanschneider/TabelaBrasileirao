@@ -1,0 +1,32 @@
+#cabecalho{
+    background-color: #10502f;
+    font-size: larger;
+    color: white;
+}
+
+li{
+    text-decoration: none;
+    list-style-type: none;
+    color: white;
+}
+
+a{
+    color: white;
+    font-size: small;
+}
+
+td.tabela{
+    min-width: 50px;
+}
+
+td.clube{
+    min-width: 300px;
+}
+
+td.color_div{
+    width: 7px;
+}
+
+td.cinco{
+    min-width: 100px;
+}
