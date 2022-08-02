@@ -1,0 +1,30 @@
+#cabecalho{
+    background-color: #10502f;
+    font-size: larger;
+    color: white;
+}
+
+li{
+    text-decoration: none;
+    list-style-type: none;
+    color: white;
+}
+
+div.jogo{
+    display: flex;
+    align-content: center;
+}
+
+div.data{
+    display: flex;
+    align-content: space-around;
+}
+
+div.times{
+    display: flex;
+    align-content: space-around;
+}
+
+nav.nav{
+    color: white;
+}
