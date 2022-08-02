@@ -45,10 +45,10 @@
                         <a href="#">NOTICIAS</a>
                     </li>
                     <li>
-                        <a href="#">CLASSIFICAÇÂO</a>
+                        <a href="#">CLASSIFICAÇÃO</a>
                     </li>
                     <li>
-                        <a href="#">ESTATISTICAS</a>
+                        <a href="#">ESTATÍSTICAS</a>
                     </li>
                     <li>
                         <a href="#">JOGADORES</a>
@@ -126,7 +126,7 @@
                 <div id="classi">
                     <div class="negrito">Qualificação/Rebaixamento</div>
                     <div> Fase de grupos da Copa Libertadores </div>
-                    <div> Qualificatorias da Copa Libertadores</div>
+                    <div> Qualificatórias da Copa Libertadores</div>
                     <div> Fase de grupos da Copa Sul-Americana</div>
                     <div> Rebaixamento</div>            
                 </div>
