@@ -136,7 +136,7 @@
         exit();
 
     }else if($comando == 'Equipe'){
-        $equipe  = $_GET['id'];
+        $equipe  = $_GET['Time'];
         $equipes = $api['equipes'][$equipe];
         $equipes = json_encode($equipes);
         echo $equipes;
