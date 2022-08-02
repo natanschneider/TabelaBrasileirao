@@ -20,7 +20,7 @@
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-                CURLOPT_URL => 'http://localhost:8080/apifut/api.php?Comando=Jogos&Ano='.$curYear.'&Campeonato=30&Time='.$time,
+                CURLOPT_URL => 'http://localhost/apifut/api.php?Comando=Jogos&Ano='.$curYear.'&Campeonato=30&Time='.$time,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
