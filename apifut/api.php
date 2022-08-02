@@ -45,6 +45,7 @@
         $i = 38;
         
         foreach($classificacao as $key=>$value){
+            $arr[$pos]['id'] = $equipes[$value]['id'];
             $arr[$pos]['nome'] = $equipes[$value]['nome-comum'];
             $arr[$pos]['Pts'] = $pontos[$value]['pg']['total'];
             $arr[$pos]['PJ'] = $pontos[$value]['j']['total'];
@@ -56,7 +57,7 @@
             $arr[$pos]['SG'] = $pontos[$value]['sg']['total'];
 
             $RodadaAtual = $api['fases'][$fase]['rodada']['atual'];
-            $numRodadas = ($RodadaAtual - 4);
+            $numRodadas = ($RodadaAtual - 5);
     
             for($x = $RodadaAtual; $x >= $numRodadas; $x--){
                 $idJogos   = $api['fases'][$fase]['jogos']["rodada"][$x];
@@ -78,6 +79,7 @@
                             }elseif($e === true){
                                 $arr[$pos]['Jogos'][] = 'Empate';
                             }
+                            unset($arr[$pos]['Jogos'][5]);
                         }elseif((int)$id_time2 == (int)$value){
                             $vit = ($placar1 < $placar2);
                             $der = ($placar1 > $placar2);
@@ -89,6 +91,7 @@
                             }elseif($e === true){
                                 $arr[$pos]['Jogos'][] = 'Empate';
                             }
+                            unset($arr[$pos]['Jogos'][5]);
                         }
                     }
                 }
@@ -137,6 +140,43 @@
         $equipes = $api['equipes'][$equipe];
         $equipes = json_encode($equipes);
         echo $equipes;
+        exit();
+
+    }else if($comando == 'Jogos'){
+        $time = $_GET['Time'];
+        $arrJogos = $api['fases'][$fase]['jogos']['id'];
+        $equipe = $api['equipes'];
+
+        foreach($arrJogos as $value){
+            $time1 = $value['time1'];
+            $time2 = $value['time2'];
+
+            $jogos['Equipe'] = $equipe[$time]['nome-comum'];
+            if($time1 == $time){
+                $jogos['jogos'][$pos]['Time1'] = $equipe[$time1]['nome-comum'];
+                $jogos['jogos'][$pos]['Time2'] = $equipe[$time2]['nome-comum'];
+                $jogos['jogos'][$pos]['placar1'] = $value['placar1'];
+                $jogos['jogos'][$pos]['placar2'] = $value['placar2'];
+                $jogos['jogos'][$pos]['data'] = $value['data'];
+                $jogos['jogos'][$pos]['horario'] = $value['horario'];
+                $jogos['jogos'][$pos]['url'] = $value['url-posjogo'];
+                $jogos['jogos'][$pos]['Brasao1'] = $equipe[$time1]['brasao'];
+                $jogos['jogos'][$pos++]['Brasao2'] = $equipe[$time2]['brasao'];    
+            }elseif($time2 == $time){
+                $jogos['jogos'][$pos]['Time1'] = $equipe[$time1]['nome-comum'];
+                $jogos['jogos'][$pos]['Time2'] = $equipe[$time2]['nome-comum'];
+                $jogos['jogos'][$pos]['placar1'] = $value['placar1'];
+                $jogos['jogos'][$pos]['placar2'] = $value['placar2'];
+                $jogos['jogos'][$pos]['data'] = $value['data'];
+                $jogos['jogos'][$pos]['horario'] = $value['horario'];
+                $jogos['jogos'][$pos]['url'] = $value['url-posjogo'];
+                $jogos['jogos'][$pos]['Brasao1'] = $equipe[$time1]['brasao'];
+                $jogos['jogos'][$pos++]['Brasao2'] = $equipe[$time2]['brasao']; 
+            }
+        }
+
+        $json = json_encode($jogos);
+        echo $json;
         exit();
 
     }else{

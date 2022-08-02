@@ -24,9 +24,52 @@ td.clube{
 }
 
 td.color_div{
-    width: 7px;
+    width: 2px;
 }
 
-td.cinco{
-    min-width: 100px;
+#Rodape{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: rgb(170, 170, 170);
+    max-width: 900px;
+    border-radius: 25px;
+}
+
+div.negrito{
+    font-weight: bold;
+}
+
+#classi{
+    display: flex;
+    flex-direction: column;
+    min-width: 500px;
+}
+
+#ultiCinco{
+    display: flex;
+    flex-direction: column;
+}
+
+div.tabela{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+
+}
+
+body{
+    background-color: rgba(182, 179, 179, 0.801);
+}
+
+tr{
+    border-bottom: 1px inset rgb(216, 211, 211);
+}
+
+#banana{
+    background-color: white;
+}
+
+a.link{
+    color: black;
 }
