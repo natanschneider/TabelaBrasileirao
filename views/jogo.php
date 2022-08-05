@@ -18,22 +18,24 @@
             $pos = 0;
 
             $curl = curl_init();
-
-            curl_setopt_array($curl, array(
-                CURLOPT_URL => 'http://localhost:8080/apifut/api.php?Comando=Jogos&Ano='.$curYear.'&Campeonato=30&Time='.$time,
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'GET',
-                )
-            );
-
+            
+            curl_setopt_array($curl, [
+              CURLOPT_URL => "https://tabelabrasileiroseriea.000webhostapp.com/apifut/api.php?Ano=".$curYear."&Campeonato=30&Comando=Jogos&Time=".$time,
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "GET",
+              CURLOPT_POSTFIELDS => "",
+              CURLOPT_HTTPHEADER => [
+                "Content-Type: application/json"
+              ],
+            ]);
+            
             $response = curl_exec($curl);
             curl_close($curl);
-            
+
             $array = json_decode($response, true);
         ?>
 
