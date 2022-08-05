@@ -1,4 +1,4 @@
-# TabelaBrasileirao
+# Tabela Brasileirao Série A
 
 Projeto desenvolvendo utilizando uma API provida pela UOL.
 Feito em PHP, HTML e CSS, utilizando XAMPP, para virtualizar o ambiente.
