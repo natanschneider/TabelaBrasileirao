@@ -4,15 +4,20 @@
     color: white;
 }
 
+a{
+    color: white;
+}
+
 li{
-    text-decoration: none;
     list-style-type: none;
     color: white;
 }
 
-div.jogo{
+div.jogo {
     display: flex;
-    align-content: center;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
 div.data{
@@ -20,9 +25,10 @@ div.data{
     align-content: space-around;
 }
 
-div.times{
+div.times {
     display: flex;
-    align-content: space-around;
+    flex-direction: column;
+    align-items: center;
 }
 
 nav.nav{

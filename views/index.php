@@ -18,7 +18,7 @@
 
         $curl = curl_init();
         curl_setopt_array($curl, array(
-          CURLOPT_URL => 'http://localhost/apifut/api.php?Comando=Classificacao&Ano='.$curDate.'&Campeonato=30',
+          CURLOPT_URL => 'http://localhost:8080/apifut/api.php?Comando=Classificacao&Ano='.$curDate.'&Campeonato=30',
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => '',
           CURLOPT_MAXREDIRS => 10,
@@ -95,7 +95,7 @@
                             <td class="color_div" style="background-color: <?php echo $color;?>;"></td>
                             <td><?php echo $o++; ?></td>
                             <td> <img src="<?php echo $value['brasao']; ?>"> </td>
-                            <td> <a style="color: black;" href="http://localhost/views/jogo.php?Time=<?php echo $value['id']; ?>"><?php echo $value['nome']; ?></a></td>
+                            <td> <a style="color: black;" href="http://localhost:8080/views/jogo.php?Time=<?php echo $value['id']; ?>"><?php echo $value['nome']; ?></a></td>
                             <td><?php echo $value['Pts']; ?></td>
                             <td><?php echo $value['PJ']; ?></td>
                             <td><?php echo $value['VIT']; ?></td>
