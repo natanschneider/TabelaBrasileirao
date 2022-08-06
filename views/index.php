@@ -16,10 +16,12 @@
     <?php
         $curDate = date('Y');
 
+        $url = 'http://'.$_SERVER['HTTP_HOST'];
+
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-        CURLOPT_URL => "https://tabelabrasileiroseriea.000webhostapp.com/apifut/api.php?Ano=".$curDate."&Campeonato=30&Comando=Classificacao",
+        CURLOPT_URL => $url.'/apifut/api.php?Ano='.$curDate.'&Campeonato=30&Comando=Classificacao',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -101,7 +103,7 @@
                             <td class="color_div" style="background-color: <?php echo $color;?>;"></td>
                             <td><?php echo $o++; ?></td>
                             <td> <img src="<?php echo $value['brasao']; ?>"> </td>
-                            <td> <a style="color: black;" href="https://tabelabrasileiroseriea.000webhostapp.com/views/jogo.php?Time=<?php echo $value['id']; ?>"><?php echo $value['nome']; ?></a></td>
+                            <td> <a style="color: black;" href="<?php echo $url.'/views/jogo.php?Time='.$value['id']; ?>"><?php echo $value['nome']; ?></a></td>
                             <td><?php echo $value['Pts']; ?></td>
                             <td><?php echo $value['PJ']; ?></td>
                             <td><?php echo $value['VIT']; ?></td>

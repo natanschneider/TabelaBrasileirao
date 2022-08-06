@@ -17,10 +17,12 @@
             $time = $_GET['Time'];
             $pos = 0;
 
+            $url = 'http://'.$_SERVER['HTTP_HOST'];
+
             $curl = curl_init();
             
             curl_setopt_array($curl, [
-              CURLOPT_URL => "https://tabelabrasileiroseriea.000webhostapp.com/apifut/api.php?Ano=".$curYear."&Campeonato=30&Comando=Jogos&Time=".$time,
+              CURLOPT_URL => $url.'/apifut/api.php?Ano='.$curYear.'&Comando=Jogos&Time='.$time.'&Campeonato=30',
               CURLOPT_RETURNTRANSFER => true,
               CURLOPT_ENCODING => "",
               CURLOPT_MAXREDIRS => 10,

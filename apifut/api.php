@@ -6,6 +6,11 @@
     if($comando == ''){
         echo 'Comando Invalido';
         exit();
+    }elseif($comando == 'whoami'){
+        $url = 'http://'.$_SERVER['HTTP_HOST'];
+
+        echo $url;
+        exit();
     }
     
     $curl = curl_init();
