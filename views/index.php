@@ -16,7 +16,7 @@
     <?php
         $curDate = date('Y');
 
-        $url = 'http://'.$_SERVER['HTTP_HOST'];
+        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 
         $curl = curl_init();
 

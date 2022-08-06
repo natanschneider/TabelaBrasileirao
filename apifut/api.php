@@ -7,7 +7,7 @@
         echo 'Comando Invalido';
         exit();
     }elseif($comando == 'whoami'){
-        $url = 'http://'.$_SERVER['HTTP_HOST'];
+        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 
         echo $url;
         exit();
