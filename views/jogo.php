@@ -17,23 +17,27 @@
             $time = $_GET['Time'];
             $pos = 0;
 
+            $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
             $curl = curl_init();
-
-            curl_setopt_array($curl, array(
-                CURLOPT_URL => 'http://localhost:8080/apifut/api.php?Comando=Jogos&Ano='.$curYear.'&Campeonato=30&Time='.$time,
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => '',
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 0,
-                CURLOPT_FOLLOWLOCATION => true,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => 'GET',
-                )
-            );
-
+            
+            curl_setopt_array($curl, [
+              CURLOPT_URL => $url.'/apifut/api.php?Ano='.$curYear.'&Comando=Jogos&Time='.$time.'&Campeonato=30',
+              CURLOPT_RETURNTRANSFER => true,
+              CURLOPT_ENCODING => "",
+              CURLOPT_MAXREDIRS => 10,
+              CURLOPT_TIMEOUT => 30,
+              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+              CURLOPT_CUSTOMREQUEST => "GET",
+              CURLOPT_POSTFIELDS => "",
+              CURLOPT_HTTPHEADER => [
+                "Content-Type: application/json"
+              ],
+            ]);
+            
             $response = curl_exec($curl);
             curl_close($curl);
-            
+
             $array = json_decode($response, true);
         ?>
 

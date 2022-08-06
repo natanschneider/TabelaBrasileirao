@@ -16,19 +16,27 @@
     <?php
         $curDate = date('Y');
 
+        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
         $curl = curl_init();
-        curl_setopt_array($curl, array(
-          CURLOPT_URL => 'http://localhost:8080/apifut/api.php?Comando=Classificacao&Ano='.$curDate.'&Campeonato=30',
-          CURLOPT_RETURNTRANSFER => true,
-          CURLOPT_ENCODING => '',
-          CURLOPT_MAXREDIRS => 10,
-          CURLOPT_TIMEOUT => 0,
-          CURLOPT_FOLLOWLOCATION => true,
-          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-          CURLOPT_CUSTOMREQUEST => 'GET',
-        ));
+
+        curl_setopt_array($curl, [
+        CURLOPT_URL => $url.'/apifut/api.php?Ano='.$curDate.'&Campeonato=30&Comando=Classificacao',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_POSTFIELDS => "",
+        CURLOPT_HTTPHEADER => [
+            "Content-Type: application/json"
+        ],
+        ]);
+
         $response = curl_exec($curl);
         curl_close($curl);
+
         $array = json_decode($response, true);
     ?>
 
@@ -95,7 +103,7 @@
                             <td class="color_div" style="background-color: <?php echo $color;?>;"></td>
                             <td><?php echo $o++; ?></td>
                             <td> <img src="<?php echo $value['brasao']; ?>"> </td>
-                            <td> <a style="color: black;" href="http://localhost:8080/views/jogo.php?Time=<?php echo $value['id']; ?>"><?php echo $value['nome']; ?></a></td>
+                            <td> <a style="color: black;" href="<?php echo $url.'/views/jogo.php?Time='.$value['id']; ?>"><?php echo $value['nome']; ?></a></td>
                             <td><?php echo $value['Pts']; ?></td>
                             <td><?php echo $value['PJ']; ?></td>
                             <td><?php echo $value['VIT']; ?></td>
