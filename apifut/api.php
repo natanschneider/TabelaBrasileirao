@@ -8,7 +8,6 @@
         exit();
     }elseif($comando == 'whoami'){
         $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-
         echo $url;
         exit();
     }
@@ -66,7 +65,7 @@
     
             for($x = $RodadaAtual; $x >= $numRodadas; $x--){
                 $idJogos   = $api['fases'][$fase]['jogos']["rodada"][$x];
-                foreach($idJogos as $key=>$val){
+                foreach($idJogos as $val){
                     $id_time1 = $arrJogos[$val]['time1'];
                     $id_time2 = $arrJogos[$val]['time2'];
                     (int)$placar1 = $arrJogos[$val]['placar1'];
@@ -188,4 +187,3 @@
         echo 'Comando invalido';
         exit();
     }
-?>
