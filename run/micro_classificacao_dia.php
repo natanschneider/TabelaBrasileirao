@@ -24,5 +24,22 @@
     $array = json_decode($response, true);
 
     $db = include('connection.php');
-    $query = mysqli_query($db, "INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ultimasCinco, `data`) VALUES('', 0, 0, 0, 0, 0, 0, 0, 0, '', current_timestamp());");
-    $var = mysqli_fetch_assoc($query);
+
+    foreach($array as $value){
+        $nome = $value['nome'];
+        $pts = $value['Pts'];
+        $pj = $value['PJ'];
+        $vit = $value['VIT'];
+        $e = $value['E'];
+        $der = $value['DER'];
+        $gp = $value['GP'];
+        $gc = $value['GC'];
+        $sg = $value['SG'];
+
+        $query = $db->query("INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ultimasCinco, `data`) 
+                    VALUES('".$nome."', ".$pts.", ".$pj.", ".$vit.", ".$e.", ".$der.", ".$gp.", ".$gc.", ".$sg.", '', current_timestamp());");
+
+        $var = $query->fetch_assoc();
+    }
+
+    $dssb->close();
