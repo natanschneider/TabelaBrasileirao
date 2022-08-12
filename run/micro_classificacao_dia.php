@@ -21,21 +21,22 @@
     $response = curl_exec($curl);
     curl_close($curl);
 
-    //echo 'Response: '.$response;
-
     $array = json_decode($response, true);
 
-    require('connection.php');
+    echo 'Acabei de rodar o CURL <br>';
 
-    $db = new database();
-    $query = $db->query("SELECT * FROM classificacao");
-    $result = $query->fetch_assoc();
+    $servername = 'localhost';
+    $username = 'root';
+    $database = 'micro_classificacao';
 
-    var_dump($result);
+    foreach($array as $value){
+        echo 'Estou no foreach <br>';
 
-    echo('First: '.$db);
+        $conn = mysqli_connect($servername, $username, '', $database);
+        echo 'Acabei de conectar com o banco <br>';
+        $query = mysqli_prepare($conn, "INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ultimasCinco) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'noSEI');");
+        echo 'Prepared statement <br>';
 
-    /*foreach($array as $value){
         $nome = $value['nome'];
         $pts = $value['Pts'];
         $pj = $value['PJ'];
@@ -46,13 +47,13 @@
         $gc = $value['GC'];
         $sg = $value['SG'];
 
-        $query = $db->query("INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ultimasCinco, `data`) 
-                    VALUES('".$nome."', ".$pts.", ".$pj.", ".$vit.", ".$e.", ".$der.", ".$gp.", ".$gc.", ".$sg.", '', current_timestamp());");
+        echo 'Peguei os dados da Array <br>';
 
-        $var = $query->fetch_assoc();
+        mysqli_stmt_bind_param($query, $nome, $pts, $pj, $vit, $e, $der, $gp, $gc, $sg);
+        echo 'bind_param <br>';
+        mysqli_stmt_execute($query);
+        echo 'Acabei de executar a query <br>';
+        $conn->close();
+        echo 'Acabei de fechar o banco <br>';
     }
-
-    echo('Second: '.$db);
-    echo('query->fetch_assoc: '.$var['_msg']);
-*/
-    $db->close();
+    echo 'Sai do foreach <br>';
