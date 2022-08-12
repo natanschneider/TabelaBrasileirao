@@ -1,6 +1,5 @@
 <?php
     $curDate = date('Y');
-
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 
     $curl = curl_init();
@@ -23,3 +22,7 @@
     curl_close($curl);
 
     $array = json_decode($response, true);
+
+    $db = include('connection.php');
+    $query = mysqli_query($db, "INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ultimasCinco, `data`) VALUES('', 0, 0, 0, 0, 0, 0, 0, 0, '', current_timestamp());");
+    $var = mysqli_fetch_assoc($query);
