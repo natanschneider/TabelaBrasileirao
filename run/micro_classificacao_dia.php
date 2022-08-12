@@ -21,11 +21,21 @@
     $response = curl_exec($curl);
     curl_close($curl);
 
+    //echo 'Response: '.$response;
+
     $array = json_decode($response, true);
 
-    $db = include('connection.php');
+    require('connection.php');
 
-    foreach($array as $value){
+    $db = new database();
+    $query = $db->query("SELECT * FROM classificacao");
+    $result = $query->fetch_assoc();
+
+    var_dump($result);
+
+    echo('First: '.$db);
+
+    /*foreach($array as $value){
         $nome = $value['nome'];
         $pts = $value['Pts'];
         $pj = $value['PJ'];
@@ -42,4 +52,7 @@
         $var = $query->fetch_assoc();
     }
 
-    $dssb->close();
+    echo('Second: '.$db);
+    echo('query->fetch_assoc: '.$var['_msg']);
+*/
+    $db->close();
