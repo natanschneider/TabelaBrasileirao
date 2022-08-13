@@ -1,18 +1,8 @@
 <?php
-
-        function database(){
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "micro_classificacao";
-
-            $conn = new mysqli($servername, $username, $password, $database);
-
-            if ($conn->connect_error) {
-                die("Conexão falhou: ".$conn->connect_error);
-            }
-            echo $conn;
-            return $conn;
+    class BD{
+        public function ConectarBanco(){    
+            $con_Bd = mysqli_connect ('localhost','root','','micro_classificacao');
+            
+            return $con_Bd;
         }
-
-
+    }

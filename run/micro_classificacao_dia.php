@@ -1,11 +1,15 @@
 <?php
-    $curDate = date('Y');
+    include("connection.php");
+    include("select_date.php");
+
+    $curYear = date('Y');
+    $curDate = date('Y, m, d');
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 
     $curl = curl_init();
 
     curl_setopt_array($curl, [
-        CURLOPT_URL => $url.'/apifut/api.php?Ano='.$curDate.'&Campeonato=30&Comando=Classificacao',
+        CURLOPT_URL => $url.'/apifut/api.php?Ano='.$curYear.'&Campeonato=30&Comando=Classificacao',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -23,37 +27,28 @@
 
     $array = json_decode($response, true);
 
-    echo 'Acabei de rodar o CURL <br>';
+    $db = new BD();
+    $conDB = $db-> ConectarBanco();
 
-    $servername = 'localhost';
-    $username = 'root';
-    $database = 'micro_classificacao';
+    $objData = new select_date();
+    $resultData = $objData->select();
 
-    foreach($array as $value){
-        echo 'Estou no foreach <br>';
+    if($resultData === false){
+        for($p = 0; $p <= 20; $p++){
+            $nome = $array[$p]['nome'];
+            (int)$pts = $array[$p]['Pts'];
+            (int)$pj = $array[$p]['PJ'];
+            (int)$vit = $array[$p]['VIT'];
+            (int)$e = $array[$p]['E'];
+            (int)$der = $array[$p]['DER'];
+            (int)$gp = $array[$p]['GP'];
+            (int)$gc = $array[$p]['GC'];
+            (int)$sg = $array[$p]['SG'];
+            $cincoUltimas = 'todo';
 
-        $conn = mysqli_connect($servername, $username, '', $database);
-        echo 'Acabei de conectar com o banco <br>';
-        $query = mysqli_prepare($conn, "INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ultimasCinco) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'noSEI');");
-        echo 'Prepared statement <br>';
-
-        $nome = $value['nome'];
-        $pts = $value['Pts'];
-        $pj = $value['PJ'];
-        $vit = $value['VIT'];
-        $e = $value['E'];
-        $der = $value['DER'];
-        $gp = $value['GP'];
-        $gc = $value['GC'];
-        $sg = $value['SG'];
-
-        echo 'Peguei os dados da Array <br>';
-
-        mysqli_stmt_bind_param($query, $nome, $pts, $pj, $vit, $e, $der, $gp, $gc, $sg);
-        echo 'bind_param <br>';
-        mysqli_stmt_execute($query);
-        echo 'Acabei de executar a query <br>';
-        $conn->close();
-        echo 'Acabei de fechar o banco <br>';
+            $sqlInsert = "INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ultimasCinco) VALUES ('".$nome."', ".$pts.", ".$pj.", ".$vit.", ".$e.", ".$der.", ".$gp.", ".$gc.", ".$sg.", '".$cincoUltimas."');";
+            $var = mysqli_query($conDB, $sqlInsert);
+        }
+    }else{
+        echo 'Data ja inclusa';
     }
-    echo 'Sai do foreach <br>';
