@@ -2,6 +2,8 @@
 
 Projeto desenvolvendo utilizando uma API provida pela UOL.
 Feito em PHP, HTML e CSS, utilizando XAMPP, para virtualizar o ambiente.
+Microserviço feito com PHP e MariaDB. (Para utilizalo, crie um CronJob na hospedajem para rodar 1 vez ao dia.
+Script: ../run/micro_classificacao_dia.php || Necessario colocar credenciais da sua DB).
 
 <br>
 
