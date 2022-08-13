@@ -3,7 +3,8 @@
     include("select_date.php");
 
     $curYear = date('Y');
-    $curDate = date('Y, m, d');
+    $curDate = date('Y-m-d');
+
     $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
 
     $curl = curl_init();
@@ -33,7 +34,7 @@
     $objData = new select_date();
     $resultData = $objData->select();
 
-    if($resultData === false){
+    if($resultData === true){
         for($p = 0; $p <= 20; $p++){
             $nome = $array[$p]['nome'];
             (int)$pts = $array[$p]['Pts'];
@@ -49,6 +50,9 @@
             $sqlInsert = "INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ultimasCinco) VALUES ('".$nome."', ".$pts.", ".$pj.", ".$vit.", ".$e.", ".$der.", ".$gp.", ".$gc.", ".$sg.", '".$cincoUltimas."');";
             $var = mysqli_query($conDB, $sqlInsert);
         }
+        echo 'Pronto!';
+        exit();
     }else{
         echo 'Data ja inclusa';
+        exit();
     }
