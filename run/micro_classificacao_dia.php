@@ -45,7 +45,7 @@
             (int)$gp = $array[$p]['GP'];
             (int)$gc = $array[$p]['GC'];
             (int)$sg = $array[$p]['SG'];
-            $cincoUltimas = 'todo';
+            $cincoUltimas = ($array[$p]['Jogos'][0].'-'.$array[$p]['Jogos'][1].'-'.$array[$p]['Jogos'][2].'-'.$array[$p]['Jogos'][3].'-'.$array[$p]['Jogos'][4]);
 
             $sqlInsert = "INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ultimasCinco) VALUES ('".$nome."', ".$pts.", ".$pj.", ".$vit.", ".$e.", ".$der.", ".$gp.", ".$gc.", ".$sg.", '".$cincoUltimas."');";
             $var = mysqli_query($conDB, $sqlInsert);
