@@ -45,14 +45,22 @@
             (int)$gp = $array[$p]['GP'];
             (int)$gc = $array[$p]['GC'];
             (int)$sg = $array[$p]['SG'];
-            $cincoUltimas = ($array[$p]['Jogos'][0].'-'.$array[$p]['Jogos'][1].'-'.$array[$p]['Jogos'][2].'-'.$array[$p]['Jogos'][3].'-'.$array[$p]['Jogos'][4]);
+            $ult1 = $array[$p]['Jogos'][0];
+            $ult2 = $array[$p]['Jogos'][1];
+            $ult3 = $array[$p]['Jogos'][2];
+            $ult4 = $array[$p]['Jogos'][3];
+            $ult5 = $array[$p]['Jogos'][4];
 
-            $sqlInsert = "INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ultimasCinco) VALUES ('".$nome."', ".$pts.", ".$pj.", ".$vit.", ".$e.", ".$der.", ".$gp.", ".$gc.", ".$sg.", '".$cincoUltimas."');";
+            $sqlInsert = "INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ult1, ult2, ult3, ult4, ult5) VALUES ('".$nome."', ".$pts.", ".$pj.", ".$vit.", ".$e.", ".$der.", ".$gp.", ".$gc.", ".$sg.", '".$ult1."', '".$ult2."', '".$ult3."', '".$ult4."', '".$ult5."');";
+
             $var = mysqli_query($conDB, $sqlInsert);
         }
         echo 'Pronto!';
         exit();
+    }elseif($resultData === true){
+        echo 'Data ja inclusa!';
+        exit();
     }else{
-        echo 'Data ja inclusa';
+        echo 'Data ja inclusa!';
         exit();
     }

@@ -1,11 +1,11 @@
 <?php
     class select_date{
-        function select(){
-            $curDate = date('Y-m-d');
+        public function select(){
+            $dataAtual = date('Y-m-d');
             $db = new BD();
             $conBD = $db->ConectarBanco();
 
-            $sql = "SELECT data FROM classificacao WHERE data = '".$curDate."';";
+            $sql = "SELECT data FROM classificacao WHERE data = '".$dataAtual."';";
 
             $res = mysqli_query($conBD, $sql);
             $count_row = mysqli_num_rows($res);
