@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 12/08/2022 às 05:37
+-- Tempo de geração: 13/08/2022 às 23:24
 -- Versão do servidor: 10.4.24-MariaDB
 -- Versão do PHP: 8.1.6
 
@@ -39,7 +39,7 @@ CREATE TABLE `classificacao` (
   `gc` int(10) NOT NULL,
   `sg` int(10) NOT NULL,
   `ultimasCinco` varchar(60) NOT NULL,
-  `data` datetime NOT NULL DEFAULT current_timestamp()
+  `data` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `classificacao` (
 --
 
 INSERT INTO `classificacao` (`id`, `clube`, `pts`, `pj`, `vit`, `e`, `der`, `gp`, `gc`, `sg`, `ultimasCinco`, `data`) VALUES
-(1, 'Palmeiras', 45, 21, 13, 6, 2, 36, 14, 22, 'V, V, V, V, V', '2022-08-11 22:18:01');
+(1, 'nome_do_time', 1, 1, 1, 1, 1, 1, 1, 1, 'V, V, V, V, V', '2022-08-13');
 
 --
 -- Índices para tabelas despejadas
@@ -67,7 +67,7 @@ ALTER TABLE `classificacao`
 -- AUTO_INCREMENT de tabela `classificacao`
 --
 ALTER TABLE `classificacao`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

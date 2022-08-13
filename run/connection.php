@@ -5,7 +5,7 @@
             if($url == 'http://localhost'){
                 $con_Bd = mysqli_connect ('localhost','root','','micro_classificacao');
             }elseif($url == 'https://tabelabrasileiroseriea.000webhostapp.com'){
-                $con_Bd = mysqli_connect ('localhost','id19376755_root','gUm#/FaR#66}nae%','id19376755_micro_classificacao');
+                $con_Bd = mysqli_connect ('localhost','usuario','senha','micro_classificacao');
             }
             return $con_Bd;
         }
