@@ -35,7 +35,7 @@
     $resultData = $objData->select();
 
     if($resultData === true){
-        for($p = 0; $p <= 20; $p++){
+        for($p = 0; $p <= 19; $p++){
             $nome = $array[$p]['nome'];
             (int)$pts = $array[$p]['Pts'];
             (int)$pj = $array[$p]['PJ'];
@@ -56,11 +56,9 @@
             $var = mysqli_query($conDB, $sqlInsert);
         }
         echo 'Pronto!';
-        exit();
-    }elseif($resultData === true){
-        echo 'Data ja inclusa!';
-        exit();
+    }elseif($resultData === false){
+        echo 'Data ja inclusa';
     }else{
-        echo 'Data ja inclusa!';
-        exit();
+        echo 'Data ja inclusa';
     }
+exit();
