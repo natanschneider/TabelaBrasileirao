@@ -2,8 +2,9 @@
 
 Projeto desenvolvendo utilizando uma API provida pela UOL.
 Feito em PHP, HTML e CSS, utilizando XAMPP, para virtualizar o ambiente.
-Microserviço feito com PHP e MariaDB. (Para utilizalo, crie um CronJob na hospedajem para rodar 1 vez ao dia.
-Script: ../run/micro_classificacao_dia.php || Necessario colocar credenciais da sua DB).
+Microserviço feito com PHP e MariaDB. (Para utilizalo, crie um CronJob na hospedagem para rodar 1 vez ao dia.
+Script: ../run/micro_classificacao_dia.php || Necessario colocar credenciais da sua DB, rode o comando 'whoami' 
+para saber exatamente a url que você precisa).
 
 Parâmetros necessários no POSTMAN ou INSOMNIA:
 
@@ -58,6 +59,3 @@ Campeonato: <br>
     Supercopa da Itália        120 <br>
 
 OBS: Fique atento na porta utilizada pelo XAMPP, talvez seja necessario mudar as URL's diretamente no código.
-
-Microsserviço: Rode 1 vez ao dia utilizando a função de Cron da sua hospedagem, o arquivo: "../run/micro_classificacao_dia.php";
-Fique atento as informações do seu banco de dados no arquivo "../run/connection.php";
