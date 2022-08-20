@@ -7,20 +7,18 @@
             $arquivo = 'logs/log_'.$logDate.'.txt';
             $file = fopen($arquivo, "w+") or die("Erro ao abrir arquivo.");
 
-            fwrite($file, $logDate.PHP_EOL);
-
             $objDB = new DB();
             $conDB = $objDB->ConectarBanco();
 
             $query = "SELECT * FROM classificacao WHERE data = '".$curDate."';";
             $result = $conDB->query($query);
 
-            while($row = $result->fetch_array(MYSQLI_NUM)){
-                foreach($row as $value){
-                    fwrite($file, $value.'-');
-                }
-                fwrite($file, PHP_EOL);
+            $i = 0;
+            while($row = $result->fetch_array(MYSQLI_ASSOC)){
+                $rows['micro_classificacao'][$i++] = $row;
             }
+
+            fwrite($file, json_encode($rows, JSON_PRETTY_PRINT));
             fclose($file);
 
             return 'Log criado com sucesso.';
