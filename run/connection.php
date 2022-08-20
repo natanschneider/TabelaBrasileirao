@@ -1,5 +1,5 @@
 <?php
-    class BD{
+    class DB{
         public function ConectarBanco(){
             $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
             if($url == 'http://localhost'){

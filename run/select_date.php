@@ -2,7 +2,7 @@
     class select_date{
         function select(){
             $curDate = date('Y-m-d');
-            $db = new BD();
+            $db = new DB();
             $conBD = $db->ConectarBanco();
 
             $sql = "SELECT data FROM classificacao WHERE data = '".$curDate."';";

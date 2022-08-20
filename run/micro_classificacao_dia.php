@@ -28,7 +28,7 @@
 
     $array = json_decode($response, true);
 
-    $db = new BD();
+    $db = new DB();
     $conDB = $db-> ConectarBanco();
 
     $objData = new select_date();
@@ -55,6 +55,7 @@
 
             $var = mysqli_query($conDB, $sqlInsert);
         }
+        var_dump($var.'<br>');
         echo 'Pronto!';
     }else{
         echo 'Data ja inclusa';
