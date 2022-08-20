@@ -1,6 +1,7 @@
 <?php
     include("connection.php");
     include("select_date.php");
+    include("log.php");
 
     $curYear = date('Y');
     $curDate = date('Y-m-d');
@@ -55,8 +56,12 @@
 
             $var = mysqli_query($conDB, $sqlInsert);
         }
-        var_dump($var.'<br>');
-        echo 'Pronto!';
+        echo 'Pronto!'.'<br>';
+
+        $objLog = new log();
+        $resultLog = $objLog->create();
+
+        echo $resultLog;
     }else{
         echo 'Data ja inclusa';
         exit();
