@@ -1,25 +1,28 @@
 <?php
     class log{
-        public function create(){
-            include('connection.php');
-
+        function create(){
             $curDate = date('Y-m-d');
-            $logDate = date('Y_m_d-H-i');
+            $logDate = date('Y_m_d-H_i');
 
-            $arquivo = 'log_'.$logDate.'.txt';
-            $file = fopen($arquivo, 'w+');
+            $arquivo = 'logs/log_'.$logDate.'.txt';
+            $file = fopen($arquivo, "w+") or die("Erro ao abrir arquivo.");
 
-            $query = "SELECT * FROM classificacao WHERE data = '".$curDate."';";
+            fwrite($file, $logDate.PHP_EOL);
+
             $objDB = new DB();
             $conDB = $objDB->ConectarBanco();
 
+            $query = "SELECT * FROM classificacao WHERE data = '".$curDate."';";
             $result = $conDB->query($query);
 
             while($row = $result->fetch_array(MYSQLI_NUM)){
-                foreach($row as $key=>$value){
-                    fwrite($file, $value);
+                foreach($row as $value){
+                    fwrite($file, $value.'-');
                 }
+                fwrite($file, PHP_EOL);
             }
             fclose($file);
+
+            return 'Log criado com sucesso.';
         }
     }
