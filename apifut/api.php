@@ -77,11 +77,11 @@
                             $der = ($placar1 < $placar2);
                             $e = ($placar1 == $placar2);
                             if($vit === true){
-                                $arr[$pos]['Jogos'][] = 'Vitoria';
+                                $arr[$pos]['Jogos'][] = 'V';
                             }elseif($der === true){
-                                $arr[$pos]['Jogos'][] = 'Derrota';
+                                $arr[$pos]['Jogos'][] = 'D';
                             }elseif($e === true){
-                                $arr[$pos]['Jogos'][] = 'Empate';
+                                $arr[$pos]['Jogos'][] = 'E';
                             }
                             unset($arr[$pos]['Jogos'][5]);
                         }elseif((int)$id_time2 == (int)$value){
@@ -89,11 +89,11 @@
                             $der = ($placar1 > $placar2);
                             $e = ($placar1 == $placar2);
                             if($vit === true){
-                                $arr[$pos]['Jogos'][] = 'Vitoria';
+                                $arr[$pos]['Jogos'][] = 'V';
                             }elseif($der === true){
-                                $arr[$pos]['Jogos'][] = 'Derrota';
+                                $arr[$pos]['Jogos'][] = 'D';
                             }elseif($e === true){
-                                $arr[$pos]['Jogos'][] = 'Empate';
+                                $arr[$pos]['Jogos'][] = 'E';
                             }
                             unset($arr[$pos]['Jogos'][5]);
                         }

@@ -56,10 +56,6 @@
             $var = mysqli_query($conDB, $sqlInsert);
         }
         echo 'Pronto!';
-        exit();
-    }elseif($resultData === false){
-        echo 'Data ja inclusa';
-        exit();
     }else{
         echo 'Data ja inclusa';
         exit();

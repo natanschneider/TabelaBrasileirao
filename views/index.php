@@ -114,11 +114,11 @@
                             <td><?php echo $value['SG']; ?></td>
                             <td><?php
                                 foreach($value['Jogos'] as $valor){
-                                    if($valor == 'Vitoria'){
+                                    if($valor == 'V'){
                                         ?> <img src="<?php echo '../imagens/VIT.svg'; ?>"> <?php
-                                    }elseif($valor == 'Derrota'){
+                                    }elseif($valor == 'D'){
                                         ?> <img src="<?php echo '../imagens/DER.svg'; ?>"> <?php
-                                    }elseif($valor == 'Empate'){
+                                    }elseif($valor == 'E'){
                                         ?> <img src="<?php echo '../imagens/E.svg'; ?>"> <?php
                                     }
                                 }
