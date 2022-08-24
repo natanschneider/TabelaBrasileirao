@@ -10,7 +10,7 @@
             $res = mysqli_query($conBD, $sql);
             $count_row = mysqli_num_rows($res);
 
-            if($count_row >= 2){
+            if($count_row >= 1){
                 return false;
             }else{
                 return true;
