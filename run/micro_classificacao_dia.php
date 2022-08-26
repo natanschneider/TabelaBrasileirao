@@ -50,16 +50,24 @@
         $ult5 = $array[$p]['Jogos'][4];
 
         $objData = new select_date();
-        $resultData = $objData->select();
+        $resultData = $objData->select($nome);
+
         if($resultData === true) {
             $sqlInsert = "INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ult1, ult2, ult3, ult4, ult5, teste) VALUES ('" . $nome . "', " . $pts . ", " . $pj . ", " . $vit . ", " . $e . ", " . $der . ", " . $gp . ", " . $gc . ", " . $sg . ", '" . $ult1 . "', '" . $ult2 . "', '" . $ult3 . "', '" . $ult4 . "', '" . $ult5 . "', 'Inserido');";
             $var = mysqli_query($conDB, $sqlInsert);
+            if($p == 19){
+                echo 'Inserido com sucesso';
+            }
         }elseif($resultData === false){
-            
+            $sqlUpdate = "UPDATE classificacao SET clube='".$nome."', pts=".$pts.", pj=".$pj.", vit=".$vit.", e=".$e.", der=".$der.", gp=".$gp.", gc=".$gc.", sg=".$sg.", `data`=current_timestamp(), ult1='".$ult1."', ult2='".$ult2."', ult3='".$ult3."', ult4='".$ult4."', ult5='".$ult5."', teste='Atualizado' WHERE clube='".$nome."' AND data='".$curDate."';";
+            $var = mysqli_query($conDB, $sqlUpdate);
+            if($p == 19){
+                echo 'Atualizado com sucesso';
+            }
         }
     }
 
-        $objLog = new log();
-        $resultLog = $objLog->create();
+    $objLog = new log();
+    $resultLog = $objLog->create();
 
-        echo $resultLog;
+    echo $resultLog;
