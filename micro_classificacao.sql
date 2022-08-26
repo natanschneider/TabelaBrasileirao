@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 24/08/2022 às 16:39
+-- Tempo de geração: 26/08/2022 às 21:02
 -- Versão do servidor: 10.4.24-MariaDB
 -- Versão do PHP: 8.1.6
 
@@ -39,6 +39,7 @@ CREATE TABLE `classificacao` (
   `gc` int(10) NOT NULL,
   `sg` int(10) NOT NULL,
   `data` date NOT NULL DEFAULT current_timestamp(),
+  `time` time NOT NULL DEFAULT current_timestamp(),
   `ult1` enum('V','D','E') NOT NULL,
   `ult2` enum('V','D','E') NOT NULL,
   `ult3` enum('V','D','E') NOT NULL,
@@ -65,8 +66,7 @@ ALTER TABLE `classificacao`
 -- AUTO_INCREMENT de tabela `classificacao`
 --
 ALTER TABLE `classificacao`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
-COMMIT;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
