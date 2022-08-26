@@ -59,7 +59,7 @@
                 echo 'Inserido com sucesso';
             }
         }elseif($resultData === false){
-            $sqlUpdate = "UPDATE classificacao SET clube='".$nome."', pts=".$pts.", pj=".$pj.", vit=".$vit.", e=".$e.", der=".$der.", gp=".$gp.", gc=".$gc.", sg=".$sg.", `data`=current_timestamp(), ult1='".$ult1."', ult2='".$ult2."', ult3='".$ult3."', ult4='".$ult4."', ult5='".$ult5."', teste='Atualizado' WHERE clube='".$nome."' AND data='".$curDate."';";
+            $sqlUpdate = "UPDATE classificacao SET clube='".$nome."', pts=".$pts.", pj=".$pj.", vit=".$vit.", e=".$e.", der=".$der.", gp=".$gp.", gc=".$gc.", sg=".$sg.", `time`=current_timestamp(), ult1='".$ult1."', ult2='".$ult2."', ult3='".$ult3."', ult4='".$ult4."', ult5='".$ult5."', teste='Atualizado' WHERE clube='".$nome."' AND data='".$curDate."';";
             $var = mysqli_query($conDB, $sqlUpdate);
             if($p == 19){
                 echo 'Atualizado com sucesso';
