@@ -32,6 +32,7 @@
 
     $db = new DB();
     $conDB = $db-> ConectarBanco();
+    $objData = new select_date();
 
     for($p = 0; $p <= 19; $p++){
         $nome = $array[$p]['nome'];
@@ -49,7 +50,6 @@
         $ult4 = $array[$p]['Jogos'][3];
         $ult5 = $array[$p]['Jogos'][4];
 
-        $objData = new select_date();
         $resultData = $objData->select($nome);
 
         if($resultData === true) {
