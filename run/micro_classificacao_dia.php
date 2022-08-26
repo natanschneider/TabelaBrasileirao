@@ -33,9 +33,6 @@
     $db = new DB();
     $conDB = $db-> ConectarBanco();
 
-    $objData = new select_date();
-    $resultData = $objData->select();
-
     for($p = 0; $p <= 19; $p++){
         $nome = $array[$p]['nome'];
         (int)$pts = $array[$p]['Pts'];
@@ -52,9 +49,14 @@
         $ult4 = $array[$p]['Jogos'][3];
         $ult5 = $array[$p]['Jogos'][4];
 
-        $sqlInsert = "INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ult1, ult2, ult3, ult4, ult5, teste) VALUES ('".$nome."', ".$pts.", ".$pj.", ".$vit.", ".$e.", ".$der.", ".$gp.", ".$gc.", ".$sg.", '".$ult1."', '".$ult2."', '".$ult3."', '".$ult4."', '".$ult5."', 'Inserido');";
-
-        $var = mysqli_query($conDB, $sqlInsert);
+        $objData = new select_date();
+        $resultData = $objData->select();
+        if($resultData === true) {
+            $sqlInsert = "INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ult1, ult2, ult3, ult4, ult5, teste) VALUES ('" . $nome . "', " . $pts . ", " . $pj . ", " . $vit . ", " . $e . ", " . $der . ", " . $gp . ", " . $gc . ", " . $sg . ", '" . $ult1 . "', '" . $ult2 . "', '" . $ult3 . "', '" . $ult4 . "', '" . $ult5 . "', 'Inserido');";
+            $var = mysqli_query($conDB, $sqlInsert);
+        }elseif($resultData === false){
+            
+        }
     }
 
         $objLog = new log();
