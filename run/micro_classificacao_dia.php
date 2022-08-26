@@ -70,4 +70,5 @@
     $objLog = new log();
     $resultLog = $objLog->create();
 
+    echo '<br>';
     echo $resultLog;
