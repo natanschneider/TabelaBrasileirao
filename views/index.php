@@ -14,6 +14,7 @@
     </head>
 
     <?php
+        date_default_timezone_set('America/Sao_Paulo');
         $curDate = date('Y');
 
         $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";

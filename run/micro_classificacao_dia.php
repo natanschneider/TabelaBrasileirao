@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set('America/Sao_Paulo');
     include("connection.php");
     include("select_date.php");
     include("log.php");

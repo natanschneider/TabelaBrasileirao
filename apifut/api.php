@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set('America/Sao_Paulo');
     $ano        = $_GET['Ano'];
     $campeonato = $_GET['Campeonato'];
     $comando    = $_GET['Comando'];

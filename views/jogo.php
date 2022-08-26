@@ -13,6 +13,7 @@
     </head>
 
     <?php
+            date_default_timezone_set('America/Sao_Paulo');
             $curYear = date('Y');
             $time = $_GET['Time'];
             $pos = 0;
