@@ -1,8 +1,6 @@
 <?php
     date_default_timezone_set('America/Sao_Paulo');
-    include("connection.php");
-    include("select_date.php");
-    include("log.php");
+    include("functions.php");
 
     $curYear = date('Y');
     $curDate = date('Y-m-d');
@@ -30,9 +28,8 @@
 
     $array = json_decode($response, true);
 
-    $db = new DB();
-    $conDB = $db-> ConectarBanco();
-    $objData = new select_date();
+    $functions = new micro_classificacao();
+    $conDB = $functions->ConectarBanco();
 
     for($p = 0; $p <= 19; $p++){
         $nome = $array[$p]['nome'];
@@ -50,7 +47,7 @@
         $ult4 = $array[$p]['Jogos'][3];
         $ult5 = $array[$p]['Jogos'][4];
 
-        $resultData = $objData->select($nome);
+        $resultData = $functions->selectDate($nome);
 
         if($resultData === true) {
             $sqlInsert = "INSERT INTO classificacao (clube, pts, pj, vit, e, der, gp, gc, sg, ult1, ult2, ult3, ult4, ult5, teste) VALUES ('" . $nome . "', " . $pts . ", " . $pj . ", " . $vit . ", " . $e . ", " . $der . ", " . $gp . ", " . $gc . ", " . $sg . ", '" . $ult1 . "', '" . $ult2 . "', '" . $ult3 . "', '" . $ult4 . "', '" . $ult5 . "', 'Inserido');";
@@ -59,7 +56,7 @@
                 echo 'Inserido com sucesso';
             }
         }elseif($resultData === false){
-            $sqlUpdate = "UPDATE classificacao SET clube='".$nome."', pts=".$pts.", pj=".$pj.", vit=".$vit.", e=".$e.", der=".$der.", gp=".$gp.", gc=".$gc.", sg=".$sg.", `time`=current_timestamp(), ult1='".$ult1."', ult2='".$ult2."', ult3='".$ult3."', ult4='".$ult4."', ult5='".$ult5."', teste='Atualizado' WHERE clube='".$nome."' AND data='".$curDate."';";
+            $sqlUpdate = "UPDATE classificacao SET clube='".$nome."', pts=".$pts.", pj=".$pj.", vit=".$vit.", e=".$e.", der=".$der.", gp=".$gp.", gc=".$gc.", sg=".$sg.", `hora`=current_timestamp(), ult1='".$ult1."', ult2='".$ult2."', ult3='".$ult3."', ult4='".$ult4."', ult5='".$ult5."', teste='Atualizado' WHERE clube='".$nome."' AND data='".$curDate."';";
             $var = mysqli_query($conDB, $sqlUpdate);
             if($p == 19){
                 echo 'Atualizado com sucesso';
@@ -67,8 +64,7 @@
         }
     }
 
-    $objLog = new log();
-    $resultLog = $objLog->create();
+    $resultLog = $functions->Logger();
 
     echo '<br>';
     echo $resultLog;
